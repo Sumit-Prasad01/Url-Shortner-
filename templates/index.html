@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-900 text-white font-sans p-6">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">
+        URL Shortner
+      </h1>
+      <form method="POST" class="bg-white shadow-md rounded p-6 space-y-4">
+        <label class="block">
+          <span class="text-gray-700 font-semibold font-sans"
+            >Enter a long URL</span
+          >
+          <input
+            type="text"
+            name="url"
+            placeholder="https://example.com/verylongUrl"
+            required
+            class="mt-1 block w-full border border-gray-500 rounded p-2 text-black"
+          />
+        </label>
+        <div class="flex justify-center">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+            type="submit"
+          >
+            Shorten
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
