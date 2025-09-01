@@ -34,6 +34,49 @@
           </button>
         </div>
       </form>
+      <h2 class="text-xl font-semibold m-2 font-sans">All Shorten URLs</h2>
+      {% if all_urls %}
+      <div class="overflow-x-auto">
+        <table class="w-full border border-collapse border-gray-500 text-sm">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border px-4 py-2 text-left text-gray-900">
+                Short URL
+              </th>
+              <th class="border px-4 py-2 text-left text-gray-900">
+                Original URL
+              </th>
+              <th class="border px-4 py-2 text-left text-gray-900">Visits</th>
+              <th class="border px-4 py-2 text-left text-gray-900">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for url in all_urls %}
+            <tr class="hover:bg-gray-700">
+              <td class="border px-4 py-2 texy-blue-600 underline">
+                <a href="/{{ url [1] }}" target="_blank"
+                  >http://localhost:5000/{{url[1]}}</a
+                >
+              </td>
+              <td class="border px-4 py-2">{{ url[0] }}</td>
+              <td class="border px-4 py-2">{{ url[2] }}</td>
+              <td class="border px-4 py-2">
+                <form
+                  action="/delete/{{url[1]}}"
+                  method="POST"
+                  onsubmit="return confirm('Delete this Short url ?')"
+                >
+                  <button class="text-red-600" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="text-gray-600">No URLs have been shorten.</p>
+      {% endif %}
     </div>
   </body>
 </html>

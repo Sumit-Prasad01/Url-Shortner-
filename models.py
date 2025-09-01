@@ -12,7 +12,7 @@ def init_db():
             CREATE TABLE IF NOT EXISTS urls (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 original_url TEXT NOT NULL,
-                short_code TEXT UNIQUE NOT NULL,
+                short_code TEXT NOT NULL UNIQUE,
                 visit_count INTEGER DEFAULT 0
             )
         ''')
@@ -21,8 +21,8 @@ def init_db():
 def insert_url(original_url, short_code):
     with sqlite3.connect(DB_NAME) as conn:
         conn.execute('''
-            INSERT INTO urls (original_url, short_code)
-            VALUES (?, ?)
+            INSERT INTO urls(original_url,short_code)
+            VALUES(?,?)
         ''', (original_url, short_code))
         conn.commit()
 
