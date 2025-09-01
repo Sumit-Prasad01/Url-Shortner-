@@ -30,7 +30,7 @@ A lightweight URL shortening service built with **Flask**, allowing users to con
    git clone https://github.com/Sumit-Prasad01/Url-Shortner-.git
    cd Url-Shortner-
 
-2. ****Create a virtual environment (recommended)**
+2. **Create a virtual environment (recommended)**
 ```
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
