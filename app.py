@@ -9,7 +9,7 @@ from models import (
     init_db,
     get_url,
     insert_url,
-    delete_url,
+    delete_url_by_code,
     get_all_urls, 
     increment_visit_count,
     )
@@ -34,6 +34,23 @@ def index():
     
     all_urls = get_all_urls()
     return render_template('index.html', all_urls = all_urls)
+
+
+@app.route('/<short_code>')
+def redirect_url(short_code):
+    url_data = get_url(short_code)
+    if url_data:
+        increment_visit_count(short_code)
+        return redirect(url_data[1])
+    return render_template('404.html'), 404
+
+
+@app.route('/delete/<short_code>', methods = ['POST'])
+def delete_url(short_code):
+    delete_url_by_code(short_code)
+    return redirect('/')
+
+
 
 if __name__ == "__main__":
     app.run(debug = True)

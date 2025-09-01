@@ -30,10 +30,10 @@ def insert_url(original_url, short_code):
 def get_url(short_code):
     with sqlite3.connect(DB_NAME) as conn:
         cur = conn.execute('''
-            SELECT original_url FROM urls WHERE short_code = ?
+            SELECT * FROM urls WHERE short_code = ?
         ''', (short_code,))
-        row = cur.fetchone()
-        return row[0] if row else None   
+        return  cur.fetchone()
+         
 
 
 def increment_visit_count(short_code):
@@ -56,7 +56,7 @@ def get_all_urls():
         return cur.fetchall()
 
 
-def delete_url(short_code):
+def delete_url_by_code(short_code):
     with sqlite3.connect(DB_NAME) as conn:
         conn.execute('''
             DELETE FROM urls WHERE short_code = ?
